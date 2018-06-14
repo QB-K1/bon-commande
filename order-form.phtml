@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<!-- Ici début de mon entête de document qui est invisible dans la page-->
+	<head>
+		<!-- Ici mon titre qui apparaît uniquement dans l'onglet du navigateur-->
+		<title>Bons de commande</title>
+		<!-- Ici l'appel des bons alphabets et signes-->
+		<meta charset="utf-8"/>
+		<!--Reset la taille du visible en mobile/tablette, évite zooms-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<!-- Ici l'appel de la base de donnees font-awesome pour icons-->
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="all" />
+		<!-- Ici l'appel du fichier CSS reset.css-->
+		<link type="text/css" rel="stylesheet" href="css/reset.css"/>
+		<!-- Ici l'appel du fichier CSS normalize.css-->
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all" />
+		<!-- Ici l'appel du fichier CSS style.css-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+	</head>
+	<!-- Fin de l'entête du document-->
+	<!-- Ici début du corps visible dans la page-->
+	<body>
+	<!--Ici début du header-->
+		<header id="headerOrder">
+
+			<h1 class="bold vert">Bons de commande</h1>
+			<h2 class="bold"><a href="http://localhost/3WA/3WA%20Modules/Developpement/BDD/exo%201/">Retourner à l'accueil</a></h2>
+
+		</header>
+		<!-- Ici fin du header-->
+		<!-- Ici début du conteneur principal-->
+		<main>
+
+		<section id="infosClient">
+
+			<?php foreach($ordersTop as $orderTop): ?>
+
+			<ul>
+				<li class="bold" ><?= $orderTop['customerName'] ?></li>
+				<li><?= $orderTop['contactLastName'] ?> <?= $orderTop['contactFirstName'] ?></li>
+				<li><?= $orderTop['addressLine1'] ?></li>
+				<li><?= $orderTop['city'] ?></li>
+			</ul>
+
+			<?php endforeach ?>
+
+		</section>
+
+		<hr/>
+
+		<section id="tableauCommande">
+			<table>
+				<!-- Ici récup numéro de commande en GET -->
+				<caption class="bold">Bon de commande n°<?= $_GET['orderNumber'] ?></caption>
+
+				<thead class="bold"> 
+					<th>Produit</th>
+					<th>Prix Unitaire</th>
+					<th>Quantité</th>
+					<th>Prix Total</th>
+				</thead>
+
+			   	<tbody>
+			     	<?php foreach($ordersMiddle as $orderMiddle): ?>
+
+			        <tr>
+			         	<td><?= $orderMiddle['productName'] ?></td>
+			          	<td><?= $orderMiddle['priceEach'] ?> €</td>
+			         	<td><?= $orderMiddle['quantityOrdered'] ?></td>
+			         	<td><?= number_format($orderMiddle['totalPrice'],2) ?> €</td>
+			        </tr>
+			      	<?php endforeach ?>
+
+
+			      	<?php foreach($ordersBottom as $orderBottom): ?>
+			      	<tr>
+			      		<td></td>
+			      		<td></td>
+			      		<td class="bold vert">Montant Total HT</td>
+			      		<td class="bold vert"><?= number_format($orderBottom['priceHT'], 2) ?> €</td>
+			      	</tr>
+			      	<tr>
+			      		<td></td>
+			      		<td></td>
+			      		<td class="bold vert">TVA (20 %)</td>
+			      		<td class="bold vert"><?= number_format($orderBottom['priceTVA'], 2) ?> €</td>
+			      	</tr>
+			      	<tr>
+			      		<td></td>
+			      		<td></td>
+			      		<td class="bold vert">Montant Total TTC</td>
+			      		<td class="bold vert"><?= number_format($orderBottom['priceTTC'], 2) ?> €</td>
+			      	</tr>
+			      	<?php endforeach ?>
+			   	</tbody>
+
+			</table>
+
+		</section>
+
+		</main>
+		<!-- Ici fin du conteneur principal-->
+		<!-- Ici le footer-->
+		<footer>
+			<!-- Ici début du copyright 3WA-->
+			<small id="licence">
+				<a rel="license" href="https://3wa.fr/propriete-materiel-pedagogique/"><img alt="Propriété de la 3W Academy" style="border-width:0" src="https://3wa.fr/wp-content/themes/3wa2015/img/logos/big.png" /></a><br /><span>Cet exercice</span> de <a href="https://3wa.fr">3W Academy</a> est mis à disposition <a rel="license" href="https://3wa.fr/propriete-materiel-pedagogique/">pour l'usage personnel des étudiants, Pas de Rediffusion - Attribution - Pas d'Utilisation Commerciale - Pas de Modification - International</a>.<br />Les autorisations au-delà du champ de cette licence peuvent être obtenues auprès de <a href="mailto:contact@3wa.fr" rel="cc:morePermissions">contact@3wa.fr</a>. Les maquettes ont été réalisées par <a href="http://www.justine-muller.fr">Justine Muller</a>.
+			</small>
+			<!-- Ici fin du copyright 3WA-->
+		</footer>
+		<!-- Ici fin du footer-->
+	</body>
+	<!-- Ici fin du corps visible dans la page-->
+</html>

@@ -1,0 +1,185 @@
+/*-------------------------------------------------------------------------------------*/
+/*------------------------------------- GLOBAL ----------------------------------------*/
+/* -------- Balises et class appelés à plusieurs endroits dans la page---------------- */
+/*-------------------------------------------------------------------------------------*/
+
+* {
+    box-sizing: border-box; /*Je précise ma box-sizing (pour une width qui prenne le padding)*/
+    outline: none; /*Pour que les éléments sur lequel le user clique ne soient pas encadrés en bleu*/
+    /*border: 3px dotted rgba(0,0,0,0.3);*/ /* Visualisation des éléments en leur mettant une border à tout */
+}
+
+body {
+	margin: 0; /*Je colle mon body aux dimensions de la page web*/
+}
+
+a, a:hover, a:visited, a:active {
+    text-decoration: none; /*Ne souligne pas les liens*/
+}
+
+/* Placement des éléments */
+.left {float: left}
+.right {float: right}
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Cacher un élément */
+.hidden {display: none}
+
+/* pour descendre et cacher élément suivant, notamment un espacement */
+.clear::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+/* Mettre en gras un élément */
+.bold {font-weight: bold}
+
+/* MARGES */
+.small-padding {padding: 10px}
+.regular-padding {padding: 25px}
+.big-padding {padding: 50px}
+
+.small-margin {margin: 10px}
+.regular-margin {margin: 25px}
+.big-margin {margin: 50px}
+
+
+/*-------------------------------------------------------------------------------------*/
+/*------------------------------------- HEADER ----------------------------------------*/
+/* --------------------- Ce qui concerne le header et la nav ------------------------- */
+/*-------------------------------------------------------------------------------------*/
+
+
+header {
+    width : 95%;
+    margin : 0 auto;
+}
+
+.vert {
+    color: #359384;
+}
+
+
+h2 > a {
+    color : #b68257;
+    padding : 1% 0;
+}
+
+/*-------------------------------------------------------------------------------------*/
+/*-------------------------------------- MAIN -----------------------------------------*/
+/* ------------------------ Ce qui concerne le corps du site ------------------------- */
+/*-------------------------------------------------------------------------------------*/
+
+main {
+    width : 95%;
+    margin : 0 auto;
+}
+
+li {
+    padding : 1% 0;
+    text-align: right;
+}
+
+    li:first-child {
+        font-size: 25px;
+    }
+
+    li:nth-child(2) {
+        font-size: 20px;
+    }
+
+hr {
+    margin-top: 5%;
+}
+
+table {
+    width : 100%;
+}
+
+caption {
+    font-size: 25px;
+    padding : 2%;
+}
+
+th {
+    color: #359384;
+    background-color: #FFFFFF;
+    padding : 1% 5% 1% 2%;
+    text-align: left;
+}
+
+    tr:hover {
+        transition: 0.3s ease-in-out;
+        box-shadow: 7px 7px 10px black;
+        animation: bounce 0.2s ease infinite alternate; 
+    }
+
+        @keyframes bounce {
+            from {
+                transform :translateY(0); /* état de départ : pas encore bougé sur axe Y */
+            }
+            to {
+                transform :translateY(-10px); /* état de fin : est descendu de Xpx sur axe Y */
+            }
+        }
+
+    tr:nth-child(odd) {
+        background-color: #B5BBB0;
+    }
+
+    tr:nth-child(even) {
+        background-color: #DCE4D7;
+    }
+
+#tableauBase th {
+    padding : 1% 5% 1% 2%;
+    vertical-align: middle;
+}
+
+#tableauBase td {
+    padding : 1% 5% 1% 2%;
+    vertical-align: middle;
+}
+
+#tableauCommande th {
+    padding : 1% 2%;
+}
+
+    #tableauCommande th:nth-child(even){
+        text-align: right;
+    }
+
+#tableauCommande td {
+    padding : 1% 2%;
+}
+
+    #tableauCommande td:nth-child(even){
+        text-align: right;
+    }
+
+
+
+
+/*-------------------------------------------------------------------------------------*/
+/*------------------------------------- FOOTER ----------------------------------------*/
+/* --------------------------- Ce qui concerne le footer ----------------------------- */
+/*-------------------------------------------------------------------------------------*/
+
+#licence {
+    clear: both; /*Pour qu'elle repasse en-dessous de article et aside en mobile*/
+    display: block;
+    text-align: center;
+    padding: 1.3em;
+    margin: 0 auto;
+}
+
+#licence img {
+    width: 2.5em;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<!-- Ici début de mon entête de document qui est invisible dans la page-->
+	<head>
+		<!-- Ici mon titre qui apparaît uniquement dans l'onglet du navigateur-->
+		<title>Bons de commande</title>
+		<!-- Ici l'appel des bons alphabets et signes-->
+		<meta charset="utf-8"/>
+		<!--Reset la taille du visible en mobile/tablette, évite zooms-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<!-- Ici l'appel de la base de donnees font-awesome pour icons-->
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="all" />
+		<!-- Ici l'appel du fichier CSS reset.css-->
+		<link type="text/css" rel="stylesheet" href="css/reset.css"/>
+		<!-- Ici l'appel du fichier CSS normalize.css-->
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" media="all" />
+		<!-- Ici l'appel du fichier CSS style.css-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+	</head>
+	<!-- Fin de l'entête du document-->
+	<!-- Ici début du corps visible dans la page-->
+	<body>
+	<!--Ici début du header-->
+		<header>
+
+			<h1 class="bold vert">Bons de commande</h1>
+
+		</header>
+		<!--Ici fin du header-->
+		<!--Ici début du conteneur principal-->
+		<main id="mainBase">
+
+			<table id="tableauBase">
+
+				<caption class="bold">Liste des commandes</caption>
+
+				<thead> 
+					<th class="bold">Commande</th>
+					<th class="bold">Date de la commande</th>
+					<th class="bold">Date de livraison</th>
+					<th class="bold">Statut</th>
+				</thead>
+
+			   	<tbody>
+			     	<?php foreach($orders as $order): ?>
+
+			        <tr>
+			          <td>
+			          <!-- href lien cliquable qui renvoie vers nouvelle adresse dont on va se servir pour récup infos en méthode GET -->
+			            <a href="order-form.php?orderNumber=<?= $order['orderNumber'] ?>"><?= $order['orderNumber'] ?></a>
+			          	</td>
+
+			          	<td><?= $order['orderDate'] ?></td>
+			         	<td><?= $order['shippedDate'] ?></td>
+			         	<td><?= $order['status'] ?></td>
+			        </tr>
+			      	<?php endforeach ?>
+			   	</tbody>
+			</table>
+
+		</main>
+		<!-- Ici fin du conteneur principal-->
+		<!-- Ici le footer-->
+		<footer>
+			<!-- Ici début du copyright 3WA-->
+			<small id="licence">
+				<a rel="license" href="https://3wa.fr/propriete-materiel-pedagogique/"><img alt="Propriété de la 3W Academy" style="border-width:0" src="https://3wa.fr/wp-content/themes/3wa2015/img/logos/big.png" /></a><br /><span>Cet exercice</span> de <a href="https://3wa.fr">3W Academy</a> est mis à disposition <a rel="license" href="https://3wa.fr/propriete-materiel-pedagogique/">pour l'usage personnel des étudiants, Pas de Rediffusion - Attribution - Pas d'Utilisation Commerciale - Pas de Modification - International</a>.<br />Les autorisations au-delà du champ de cette licence peuvent être obtenues auprès de <a href="mailto:contact@3wa.fr" rel="cc:morePermissions">contact@3wa.fr</a>. Les maquettes ont été réalisées par <a href="http://www.justine-muller.fr">Justine Muller</a>.
+			</small>
+			<!-- Ici fin du copyright 3WA-->
+		</footer>
+		<!-- Ici fin du footer-->
+	</body>
+	<!-- Ici fin du corps visible dans la page-->
+</html>
